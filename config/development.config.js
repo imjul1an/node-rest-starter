@@ -1,5 +1,5 @@
 var config = {
-	connection: 'mongodb://localhost:27017/tapreservedb',
+	connection: 'mongodb://localhost:27017/nodestarter',
 	options: { auto_reconnect: true },
 
 	applicationUrl: 'http://localhost:5000',

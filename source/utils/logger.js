@@ -50,7 +50,6 @@ var logger = {
 	timestamptMessage: function (message) {
 		return util.format('[%s] %s', moment(), message);
 	}
-
 };
 
 var logentriesLogger = (function (_super) {

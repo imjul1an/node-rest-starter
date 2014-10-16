@@ -1,6 +1,6 @@
 var mongo = require('mongojs');
 
-var collections = ['accounts', 'venues', 'bookings'];
+var collections = ['users'];
 
 module.exports = function (config, connection) {
 	connection = connection || 'connection';

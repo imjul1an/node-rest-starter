@@ -10,5 +10,5 @@ module.exports = {
 };
 
 function findByAccessToken(token, callback) {
-	db.accounts.findOne({accessToken: token}, callback);
+	db.users.findOne({accessToken: token}, callback);
 }
