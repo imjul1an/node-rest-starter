@@ -6,4 +6,9 @@ var config = require('../../config');
 var db = require('../db')(config);
 
 module.exports = {
+	findByAccessToken: findByAccessToken
 };
+
+function findByAccessToken(token, callback) {
+	db.accounts.findOne({accessToken: token}, callback);
+}
