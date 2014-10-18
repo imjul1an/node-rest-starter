@@ -15,22 +15,22 @@ describe('users.spec.js', function () {
 			url = apiUrl;
 		});
 
-		beforeEach(function (done) {
-			request.post({url: url, body: payload, json: true}, function (err, resp, body) {
-				response = resp;
-				result = body;
-				done(err);
-			});
-		});
-
 		describe('and payload is ok', function () {
 			beforeEach(function () {
 				payload = { phone:'+380633252435', fullName: 'Yulian Ustiyanovych' };
 			});
 
+			beforeEach(function (done) {
+				request.post({url: url, body: payload, json: true}, function (err, resp, body) {
+					response = resp;
+					result = body;
+					done(err);
+				});
+			});
+
 			it('should return 201 (OK)', function () {
-			expect(response.statusCode).equal(201);
-		});
+				expect(response.statusCode).equal(201);
+			});
 		});
 	});
 });

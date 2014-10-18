@@ -50,7 +50,7 @@ app.configure('production', function() {
 
 require('./source/api')(app);
 
-applyAuthentication(app, ['/api']);
+// applyAuthentication(app, ['/api']);
 
 http.createServer(app).listen(app.get('port'), function() {
 	var env = process.env.NODE_ENV || 'development';
