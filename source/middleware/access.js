@@ -4,7 +4,6 @@ var auth = require('./auth');
 
 module.exports = {
 	authenticatedAccess: authenticatedAccess,
-	authenticatedAdminAccess: authenticatedAdminAccess,
 	guest: guest,
 	verified: verified,
 	admin: admin
@@ -14,13 +13,6 @@ function authenticatedAccess() {
 	return function (req, res, next) {
 		var validateToken = auth.validateToken();
 		validateToken(req, res, next);
-	};
-}
-
-function authenticatedAdminAccess() {
-	return function (req, res, next) {
-		var validateAdminToken = auth.validateAdminToken();
-		validateAdminToken(req, res, next);
 	};
 }
 
