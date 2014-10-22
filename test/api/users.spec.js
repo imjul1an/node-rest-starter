@@ -31,6 +31,10 @@ describe('users.spec.js', function () {
 			it('should return 201 (OK)', function () {
 				expect(response.statusCode).equal(201);
 			});
+
+			it('should contain _id, fullName, phone, accessToken, created', function () {
+				expect(result.fullName).to.be.ok;
+			});
 		});
 	});
 });

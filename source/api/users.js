@@ -27,7 +27,15 @@ function venuesService (app) {
 	}
 
 	function createUser (req, res, next) {
-		res.json(201, {user: ''});
+		var user = {phone: req.body.phone, fullName: req.body.fullName};
+
+		users.create(user, function (err, user) {
+			if (err) {
+				return next ({message: 'can not create a user', status: 500});
+			}
+
+			res.json(201, user);
+		});
 	}
 }
 
