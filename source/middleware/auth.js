@@ -1,7 +1,6 @@
 "use strict";
 
 var users = require('../models/users');
-var config = require('../../config');
 
 module.exports = {
 	validateToken: validateToken
