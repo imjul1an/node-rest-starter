@@ -19,11 +19,7 @@ function applyAuthentication(app, routesToSecure) {
 		});
 
 		if (apply && !guestAccess) {
-			if (route.path.split('/')) {
-				route.callbacks.splice(0, 0, middleware.access.authenticatedAdminAccess());
-			} else {
-				route.callbacks.splice(0, 0, middleware.access.authenticatedAccess());
-			}
+			route.callbacks.splice(0, 0, middleware.access.authenticatedAccess());
 		}
 	}
 }
