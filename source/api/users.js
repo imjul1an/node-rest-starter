@@ -1,5 +1,3 @@
-var _ = require('underscore');
-var config = require('../../config');
 var middleware = require('../middleware');
 
 var users = require('../models/users.js');
@@ -27,7 +25,7 @@ function venuesService (app) {
 	}
 
 	function createUser (req, res, next) {
-		var user = {phone: req.body.phone, fullName: req.body.fullName};
+		var user = { phone: req.body.phone, fullName: req.body.fullName };
 
 		users.create(user, function (err, user) {
 			if (err) {
