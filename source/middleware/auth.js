@@ -9,7 +9,7 @@ module.exports = {
 
 function validateToken() {
 	return function (req, res, next) {
-		var token = req.headers['x-access-token'] || req.query.accessToken || (config.auth.cookieName && req.cookies[config.auth.cookieName]);
+		var token = req.headers['x-access-token'] || req.query.accessToken;
 
 		if (!token) {
 			return next({message: 'access token is missing', status: 401});
