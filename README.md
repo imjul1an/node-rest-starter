@@ -1,6 +1,6 @@
 # Node-rest-starter generator
 
-Node-rest-starter It is a simple node.js project generator that allows you to get started on developing REST services fast and easy. It's based on [Express](https://github.com/strongloop/express) and [Mongodb](http://www.mongodb.org/).
+Node-rest-starter It is a simple node.js project generator that allows you to get started on developing REST services fast and easy. It's based on well known libs and frameworks such as [Express](https://github.com/strongloop/express), [Mongodb](http://www.mongodb.org/) for developing your endpoints and [Mocha](https://github.com/mochajs/mocha), [Chai](https://github.com/chaijs/chai) for testing purpose. [Logentries](https://logentries.com/) is used as a logging service.
 
 # Getting started
 
@@ -58,9 +58,9 @@ $ npm test
 ├── .README.md
 ```
 
-### Accounts
+#### confg
+Config folder contains four different configurations, for development, production, staging and test environments
 
-All API users must have corresponding `account` created. Based on `account` state with API would allow/disallow usage of particular methods.
 
 ### Account creation
 
