@@ -7,8 +7,13 @@ Node-rest-starter It is a simple node.js project generator that allows you to ge
 Clone the repo,
 
 ```bash
+$ git clone git@github.com:julianusti/bidding.git
+```
+
+Install all dependencies that `node-rest-starter` use,
+
+```bash
 $ npm install
-$ npm test
 ```
 
 Run tests,
