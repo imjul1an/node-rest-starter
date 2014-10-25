@@ -22,7 +22,7 @@ Run tests,
 $ npm test
 ```
 
-## Folder structure
+## Folder tree
 ```
 ├── node-rest-starter/
 │   ├── config
@@ -64,9 +64,18 @@ $ npm test
 * `/source/middleware/auth.js` - validation for access token.
 * `/source/middleware/error.js` - error logging.
 * `/source/models` - data base models, such as: users, customers, payments, venues etc...
-* `/utils/applyAuthentication.js` - patching express routes with authentication functions. More on that, please follow the good friend of mine and the author [Alexand Beletsky] (http://beletsky.net/2013/10/securing-express-dot-js-http-endpoints.html)
+* `/utils/applyAuthentication.js` - patching express routes with authentication functions. More on that, please follow the good friend of mine and the author [Alexandr Beletsky] (http://beletsky.net/2013/10/securing-express-dot-js-http-endpoints.html)
 * `/utils/logger.js` - logentries wrapper.
 * `/test/` - tests.
+
+
+# Contribute
+
+Clone the repo and make pull request.
+
+```bash
+$ git clone git@github.com:julianusti/node-rest-starter.git
+```
 
 
 # License (MIT)
