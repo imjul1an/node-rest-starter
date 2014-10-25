@@ -69,10 +69,6 @@ $ npm test
 * `/test/` - tests.
 
 
-
-### Account creation
-
-
 # License (MIT)
 
 Copyright (c) 2014, 
