@@ -22,7 +22,7 @@ Run tests,
 $ npm test
 ```
 
-## Directory structure
+## Folder structure
 ```
 ├── node-rest-starter/
 │   ├── config
@@ -58,8 +58,15 @@ $ npm test
 ├── .README.md
 ```
 
-#### confg
-Config folder contains four different configurations, for development, production, staging and test environments
+* `/config` - contains app configurations, for development, production, staging and test environments, depends on NODE_ENV variable.
+
+* `/source/api` - endponts of your app.
+* `/source/middleware/access.js` - access validations for different users.
+* `/source/middleware/auth.js` - validation for access token.
+* `/source/middleware/error.js` - error logging.
+* `/source/models` - data base models, such as: users, customers, payments, venues etc...
+* `/utils/applyAuthentication.js` - patching express routes with authentication functions. More on that, please follow the good friend of mine and the author [Alexand Beletsky] (http://beletsky.net/2013/10/securing-express-dot-js-http-endpoints.html)
+
 
 
 ### Account creation
