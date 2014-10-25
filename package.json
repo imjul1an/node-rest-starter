@@ -1,8 +1,7 @@
 {
   "name": "node-rest-starter",
-  "version": "1.0.0",
+  "version": "0.0.0-5",
   "description": "Node-starter is a simple node.js boilerplate that allows you quickly start creating RESTful services based on Express.js and Mongodb",
-  "main": "app.js",
   "dependencies": {
     "colors": "^1.0.3",
     "crypto": "0.0.3",
