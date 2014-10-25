@@ -26,29 +26,29 @@ $ npm test
 ```
 ├── node-rest-starter/
 │   ├── config
-│	│     ├── development.config.js
+│   │     ├── development.config.js
 │   │     ├── production.config.js
 │   │     ├── staging.config.js
 │   │     ├── test.config.js
 │   │     ├── index.js	
-│	├── source
-│	│     ├── api
+│   ├── source
+│   │     ├── api
 │   │     ├── db
 │   │     ├── middleware
-│	│	  │   ├── access.js
-│	│	  │   ├── auth.js
-│	│	  │   ├── errors.js
-│	│	  │   ├── index.js		
+│   │     │   ├── access.js
+│   │     │   ├── auth.js
+│   │     │   ├── errors.js
+│   │     │   ├── index.js
 │   │     ├── models
 │   │     ├── utils
-│	│	  │   ├── applyAuthentication.js
-│	│	  │   ├── logger.js
-│	├── test
-│   │	  ├── api
-│   │	  ├── common.js
-│   │	  ├── mocha.opts.js
-│   │	  ├── run.js
-│   │	  ├── utils.js
+│   │     │   ├── applyAuthentication.js
+│   │     │   ├── logger.js
+│   ├── test
+│   │     ├── api
+│   │     ├── common.js
+│   │     ├── mocha.opts.js
+│   │     ├── run.js
+│   │     ├── utils.js
 ├── app.js
 ├── .editorconfig
 ├── .gitignore
