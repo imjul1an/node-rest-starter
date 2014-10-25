@@ -22,7 +22,47 @@ Run tests,
 $ npm test
 ```
 
+## Directory structure
+```
+├── node-rest-starter/
+│   ├── config
+│	│     ├── development.config.js
+│   │     ├── production.config.js
+│   │     ├── staging.config.js
+│   │     ├── test.config.js
+│   │     ├── index.js	
+│	├── source
+│	│     ├── api
+│   │     ├── db
+│   │     ├── middleware
+│	│	  │   ├── access.js
+│	│	  │   ├── auth.js
+│	│	  │   ├── errors.js
+│	│	  │   ├── index.js		
+│   │     ├── models
+│   │     ├── utils
+│	│	  │   ├── applyAuthentication.js
+│	│	  │   ├── logger.js
+│	├── test
+│   │	  ├── api
+│   │	  ├── common.js
+│   │	  ├── mocha.opts.js
+│   │	  ├── run.js
+│   │	  ├── utils.js
+├── app.js
+├── .editorconfig
+├── .gitignore
+├── .jshintrc
+├── .npmignore
+├── .package.json
+├── .README.md
+```
 
+### Accounts
+
+All API users must have corresponding `account` created. Based on `account` state with API would allow/disallow usage of particular methods.
+
+### Account creation
 
 
 # License (MIT)
