@@ -1,6 +1,6 @@
-# Node-rest-starter generator
+# Node-rest-starter
 
-Node-rest-starter It is a simple node.js project generator that allows you to get started on developing REST services fast and easy. It's based on well known libs and frameworks such as [Express](https://github.com/strongloop/express), [Mongodb](http://www.mongodb.org/) for developing your endpoints. [Mocha](https://github.com/mochajs/mocha) and [Chai](https://github.com/chaijs/chai) for testing purpose. [Logentries](https://logentries.com/) is used as a logging service.
+Node-rest-starter - is a simple node.js app skeleton that allows you fast and easy started on developing REST services. It's based on well known libs and frameworks such as [Express](https://github.com/strongloop/express), [Mongodb](http://www.mongodb.org/) for developing your endpoints. [Mocha](https://github.com/mochajs/mocha) and [Chai](https://github.com/chaijs/chai) for testing purpose. [Logentries](https://logentries.com/) is used as a logging service.
 
 # Getting started
 
