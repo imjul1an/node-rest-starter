@@ -1,11 +1,8 @@
-var middleware = require('../middleware');
-
 var users = require('../models/users.js');
 
 function venuesService (app) {
 
 	app.post('/api/users',
-		middleware.access.guest(),
 		validateRequest,
 		createUser
 	);
