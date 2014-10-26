@@ -35,13 +35,10 @@ $ npm test
 │   │     ├── api
 │   │     ├── db
 │   │     ├── middleware
-│   │     │   ├── access.js
-│   │     │   ├── auth.js
 │   │     │   ├── errors.js
 │   │     │   ├── index.js
 │   │     ├── models
 │   │     ├── utils
-│   │     │   ├── applyAuthentication.js
 │   │     │   ├── logger.js
 │   ├── test
 │   │     ├── api
@@ -60,11 +57,8 @@ $ npm test
 
 * `/config` - contains app configurations, for development, production, staging and test environments, depends on NODE_ENV variable.
 * `/source/api` - endponts of your app.
-* `/source/middleware/access.js` - access validations for different users.
-* `/source/middleware/auth.js` - validation for access token.
 * `/source/middleware/error.js` - error logging.
 * `/source/models` - data base models, such as: users, customers, payments, venues etc...
-* `/utils/applyAuthentication.js` - patching express routes with authentication functions. More on that, please follow the good friend of mine and the author [Alexandr Beletsky] (http://beletsky.net/2013/10/securing-express-dot-js-http-endpoints.html)
 * `/utils/logger.js` - logentries wrapper.
 * `/test/` - tests.
 
