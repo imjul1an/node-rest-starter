@@ -2,8 +2,13 @@
 
 var http = require('http');
 var middleware = require('./source/middleware');
-var applyAuthentication = require('./source/utils/applyAuthentication');
 var config = require('./config');
+
+var compression = require('compression');
+var methodOverride = require('method-override');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var morgan = require('morgan');
 
 var logger = require('./source/utils/logger');
 var express = require('express');
@@ -18,41 +23,50 @@ var allowCrossDomain = function(req, res, next) {
 	next();
 };
 
-app.configure(function() {
-	app.set('port', process.env.PORT || 5000);
-	app.use(express.favicon());
-	app.use(express.bodyParser());
-	app.use(express.cookieParser());
-	app.use(express.methodOverride());
-	app.use(allowCrossDomain);
-	app.use(middleware.errors.logHttpErrors());
-	app.use(app.router);
-});
+app.set('port', process.env.PORT || 5000);
 
-app.configure('development', function() {
-	app.use(express.logger('dev'));
-	app.use(express.errorHandler());
-});
+app.use(methodOverride());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(allowCrossDomain);
+app.use(middleware.errors.logHttpErrors());
 
-app.configure('test', function() {
-	app.use(express.errorHandler());
-});
-
-app.configure('staging', function() {
-	app.use(express.logger('short'));
-	app.use(express.compress());
-});
-
-app.configure('production', function() {
-	app.use(express.logger('short'));
-	app.use(express.compress());
-});
-
+configure();
 require('./source/api')(app);
-
-applyAuthentication(app, ['/api']);
 
 http.createServer(app).listen(app.get('port'), function() {
 	var env = process.env.NODE_ENV || 'development';
 	logger.info('[your-app-name] app listening on port ' + app.get('port') + ' ' + env + ' mongo: ' + config.connection);
 });
+
+function configure() {
+	var env = process.env.NODE_ENV || 'development';
+
+	switch(env) {
+		case 'development':
+			app.use(morgan('dev'));
+			app.use(compression());
+		break;
+
+		case 'production':
+			app.use(morgan('tiny'));
+			app.use(compression());
+		break;
+
+		case 'staging':
+			app.use(morgan('short'));
+			app.use(compression());
+		break;
+
+		case 'test':
+			app.use(morgan('combine'));
+			app.use(compression());
+		break;
+
+		default:
+			app.use(morgan('dev'));
+			app.use(compression());
+		break;
+	}
+}

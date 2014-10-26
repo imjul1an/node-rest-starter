@@ -32,7 +32,7 @@ function venuesService (app) {
 				return next ({message: 'can not create a user', status: 500});
 			}
 
-			res.json(201, user);
+			res.status(201).json(user);
 		});
 	}
 }
