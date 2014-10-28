@@ -12,16 +12,8 @@ var morgan = require('morgan');
 
 var logger = require('./source/utils/logger');
 var express = require('express');
+var cors = require('cors');
 var app = express();
-
-var allowCrossDomain = function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', req.headers.origin !== 'null' && req.headers.origin || '*');
-	res.header('Access-Control-Allow-Credentials', true);
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-	res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-Access-Token, X-Revision, Content-Type');
-
-	next();
-};
 
 app.set('port', process.env.PORT || 5000);
 
@@ -29,7 +21,7 @@ app.use(methodOverride());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(allowCrossDomain);
+app.use(cors());
 app.use(middleware.errors.logHttpErrors());
 
 configure();
