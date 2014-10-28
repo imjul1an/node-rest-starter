@@ -1,19 +1,20 @@
 "use strict";
 
-var http = require('http');
-var middleware = require('./source/middleware');
-var config = require('./config');
-
+var express = require('express');
+var cors = require('cors');
 var compression = require('compression');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
+var http = require('http');
+
+var app = express();
+
+var middleware = require('./source/middleware');
+var config = require('./config');
 
 var logger = require('./source/utils/logger');
-var express = require('express');
-var cors = require('cors');
-var app = express();
 
 app.set('port', process.env.PORT || 5000);
 
