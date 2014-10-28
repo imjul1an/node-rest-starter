@@ -15,8 +15,7 @@ var config = require('./config');
 
 var logger = require('./source/utils/logger');
 var env = process.env.NODE_ENV || 'development';
-
-app.set('port', process.env.PORT || 5000);
+var port = process.env.PORT || 5000;
 
 app.use(morgan('short', {stream: logger.stream()}));
 
@@ -33,6 +32,8 @@ if (env === 'production') {
 
 require('./source/api')(app);
 
-app.listen(app.get('port'), function () {
+app.use(middleware.errors.logErrors());
+
+app.listen(port, function () {
 	logger.info('[your-app-name] app listening on port ' + app.get('port') + ' ' + env + ' mongo: ' + config.connection);
 });
