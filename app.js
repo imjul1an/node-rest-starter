@@ -1,72 +1,42 @@
 "use strict";
 
-var http = require('http');
-var middleware = require('./source/middleware');
-var config = require('./config');
-
+var express = require('express');
+var cors = require('cors');
 var compression = require('compression');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 
+var middleware = require('./source/middleware');
+var auth = require('./source/utils/applyAuth');
+var config = require('./config');
+
 var logger = require('./source/utils/logger');
-var express = require('express');
+var env = process.env.NODE_ENV || 'development';
+var port = process.env.PORT || 5000;
+
 var app = express();
 
-var allowCrossDomain = function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', req.headers.origin !== 'null' && req.headers.origin || '*');
-	res.header('Access-Control-Allow-Credentials', true);
-	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-	res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-Access-Token, X-Revision, Content-Type');
+auth(app, middleware.access.auth(), ['/api']);
 
-	next();
-};
-
-app.set('port', process.env.PORT || 5000);
+app.use(morgan('short', {stream: logger.stream()}));
 
 app.use(methodOverride());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(allowCrossDomain);
+app.use(cors());
 app.use(middleware.errors.logHttpErrors());
 
-configure();
+if (env === 'production') {
+	app.use(compression());
+}
+
 require('./source/api')(app);
 
-http.createServer(app).listen(app.get('port'), function() {
-	var env = process.env.NODE_ENV || 'development';
+app.use(middleware.errors.logErrors());
+
+app.listen(port, function () {
 	logger.info('[your-app-name] app listening on port ' + app.get('port') + ' ' + env + ' mongo: ' + config.connection);
 });
-
-function configure() {
-	var env = process.env.NODE_ENV || 'development';
-
-	switch(env) {
-		case 'development':
-			app.use(morgan('dev'));
-			app.use(compression());
-		break;
-
-		case 'production':
-			app.use(morgan('tiny'));
-			app.use(compression());
-		break;
-
-		case 'staging':
-			app.use(morgan('short'));
-			app.use(compression());
-		break;
-
-		case 'test':
-			app.use(morgan('combine'));
-			app.use(compression());
-		break;
-
-		default:
-			app.use(morgan('dev'));
-			app.use(compression());
-		break;
-	}
-}
