@@ -7,7 +7,6 @@ var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
-var http = require('http');
 
 var app = express();
 
@@ -28,14 +27,14 @@ app.use(middleware.errors.logHttpErrors());
 configure();
 require('./source/api')(app);
 
-http.createServer(app).listen(app.get('port'), function() {
-	var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'development';
+
+app.listen(app.get('port'), function () {
 	logger.info('[your-app-name] app listening on port ' + app.get('port') + ' ' + env + ' mongo: ' + config.connection);
 });
 
-function configure() {
-	var env = process.env.NODE_ENV || 'development';
 
+function configure() {
 	switch(env) {
 		case 'development':
 			app.use(morgan('dev'));
