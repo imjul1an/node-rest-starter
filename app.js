@@ -18,7 +18,7 @@ var env = process.env.NODE_ENV || 'development';
 
 app.set('port', process.env.PORT || 5000);
 
-app.use(morgan('short'));
+app.use(morgan('short', {stream: logger.stream()}));
 
 app.use(methodOverride());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,7 +32,6 @@ if (env === 'production') {
 }
 
 require('./source/api')(app);
-
 
 app.listen(app.get('port'), function () {
 	logger.info('[your-app-name] app listening on port ' + app.get('port') + ' ' + env + ' mongo: ' + config.connection);

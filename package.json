@@ -18,7 +18,6 @@
     "node-logentries": "^0.1.4",
     "nodemon": "^1.2.1",
     "request": "^2.45.0",
-    "sinon": "^1.10.3",
     "underscore": "^1.7.0",
     "util": "^0.10.3"
   },
